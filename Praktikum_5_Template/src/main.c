@@ -36,6 +36,8 @@
 
 #define MY_ADC    ADCA
 #define MY_ADC_CH ADC_CH0
+#define MY_ADC2    ADCA
+#define MY_ADC2_CH ADC_CH1
 #define USART_SERIAL_EXAMPLE             &USARTC0
 #define USART_SERIAL_EXAMPLE_BAUDRATE    9600
 #define USART_SERIAL_CHAR_LENGTH         USART_CHSIZE_8BIT_gc
@@ -46,6 +48,7 @@ static char reads[100];
 static char buffarray[200];
 char in = 'x';
 uint16_t result = 0;
+uint16_t result2 = 0;
 //int usarttest = 0;
 int potensiotest = 0;
 int servotest = 0;
@@ -61,6 +64,7 @@ long increment = 0;
 static char strbuf[201];
 
 static portTASK_FUNCTION_PROTO(testPotentio, p_);
+static portTASK_FUNCTION_PROTO(testLight, p_);
 static portTASK_FUNCTION_PROTO(testServo, p_);
 static portTASK_FUNCTION_PROTO(testQtouch, p_);
 static portTASK_FUNCTION_PROTO(testUsart, p_);
@@ -106,12 +110,40 @@ static void adc_init(void)
 	adc_write_configuration(&MY_ADC, &adc_conf);
 	adcch_write_configuration(&MY_ADC, MY_ADC_CH, &adcch_conf);
 }
+
+static void adc_init2(void)
+{
+	struct adc_config adc_conf;
+	struct adc_channel_config adcch_conf;
+
+	adc_read_configuration(&MY_ADC2, &adc_conf);
+	adcch_read_configuration(&MY_ADC2, MY_ADC2_CH, &adcch_conf);
+
+	adc_set_conversion_parameters(&adc_conf, ADC_SIGN_OFF, ADC_RES_12,ADC_REF_VCC);
+	adc_set_conversion_trigger(&adc_conf, ADC_TRIG_MANUAL, 1, 0);
+	adc_set_clock_rate(&adc_conf, 200000UL);
+
+	adcch_set_input(&adcch_conf, J3_PIN0, ADCCH_NEG_NONE, 1);
+
+	adc_write_configuration(&MY_ADC2, &adc_conf);
+	adcch_write_configuration(&MY_ADC2, MY_ADC2_CH, &adcch_conf);
+}
+
 static uint16_t adc_read(){
 	uint16_t result;
 	adc_enable(&MY_ADC);
 	adc_start_conversion(&MY_ADC, MY_ADC_CH);
 	adc_wait_for_interrupt_flag(&MY_ADC, MY_ADC_CH);
 	result = adc_get_result(&MY_ADC, MY_ADC_CH);
+	return result;
+}
+
+static uint16_t adc_read2(){
+	uint16_t result;
+	adc_enable(&MY_ADC2);
+	adc_start_conversion(&MY_ADC2, MY_ADC2_CH);
+	adc_wait_for_interrupt_flag(&MY_ADC2, MY_ADC2_CH);
+	result = adc_get_result(&MY_ADC2, MY_ADC2_CH);
 	return result;
 }
 
@@ -168,6 +200,7 @@ int main (void)
 	
 	pmic_init();
 	adc_init();
+	adc_init2();
 	gfx_mono_init();
 	ioport_set_pin_level(LCD_BACKLIGHT_ENABLE_PIN, 1);
 	PORTC_OUTSET = PIN3_bm; // PC3 as TX
@@ -186,6 +219,7 @@ int main (void)
 	xTaskCreate(testPotentio,"",500,NULL,1,NULL);
 	xTaskCreate(testServo,"",500,NULL,1,NULL);
 	xTaskCreate(testQtouch,"",500,NULL,1,NULL);
+	xTaskCreate(testLight,"",500,NULL,1,NULL);
 	//xTaskCreate(testUsart,"",500,NULL,1,NULL);
 	//xTaskCreate(testHeap,"",500,NULL,1,NULL);
 	xTaskCreate(testLCD,"",500,NULL,1,NULL);
@@ -209,14 +243,18 @@ static portTASK_FUNCTION(testLCD, p_){
 		snprintf(strbuf, sizeof(strbuf), "Qtouch : %3d",qtouchtest);
 		gfx_mono_draw_string(strbuf,0, 8, &sysfont);
 		
-		//print servo
-		snprintf(strbuf, sizeof(strbuf), "Servo : %3d",servotest);
+		//print potentio
+		snprintf(strbuf, sizeof(strbuf), "Read Lgt : %3d",result2);
 		gfx_mono_draw_string(strbuf,0, 16, &sysfont);
 		
-		//print usart
-		snprintf(strbuf, sizeof(strbuf),"%3d :%3d :%3d :%3d \n", result,servotest,qtouchtest,heap);
+		//print servo
+		snprintf(strbuf, sizeof(strbuf), "Servo : %3d",servotest);
 		gfx_mono_draw_string(strbuf,0, 24, &sysfont);
-		sendString(strbuf);
+		
+		//print usart
+		//snprintf(strbuf, sizeof(strbuf),"%3d :%3d :%3d :%3d \n", result,servotest,qtouchtest,heap);
+		//gfx_mono_draw_string(strbuf,0, 24, &sysfont);
+		//sendString(strbuf);
 		
 		
 		vTaskDelay(5/portTICK_PERIOD_MS);
@@ -275,6 +313,13 @@ static portTASK_FUNCTION(testQtouch, p_){
 			qtouchtest=0;
 		}
 		vTaskDelay(100/portTICK_PERIOD_MS);
+	}
+}
+
+static portTASK_FUNCTION(testLight, p_){
+	while(1){
+		result2 = adc_read2();
+		vTaskDelay(10/portTICK_PERIOD_MS);
 	}
 }
 
