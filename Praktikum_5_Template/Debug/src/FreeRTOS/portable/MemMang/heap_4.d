@@ -1,6 +1,6 @@
-src/FreeRTOS/portable/MemMang/heap_3.d \
- src/FreeRTOS/portable/MemMang/heap_3.o: \
- ../src/FreeRTOS/portable/MemMang/heap_3.c \
+src/FreeRTOS/portable/MemMang/heap_4.d \
+ src/FreeRTOS/portable/MemMang/heap_4.o: \
+ ../src/FreeRTOS/portable/MemMang/heap_4.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\4.9.2\include\stddef.h \
  ../src/FreeRTOS/include/FreeRTOS.h \

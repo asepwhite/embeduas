@@ -220,8 +220,8 @@ int main (void)
 	xTaskCreate(testServo,"",500,NULL,1,NULL);
 	xTaskCreate(testQtouch,"",500,NULL,1,NULL);
 	xTaskCreate(testLight,"",500,NULL,1,NULL);
-	//xTaskCreate(testUsart,"",500,NULL,1,NULL);
-	//xTaskCreate(testHeap,"",500,NULL,1,NULL);
+	xTaskCreate(testUsart,"",500,NULL,1,NULL);
+	xTaskCreate(testHeap,"",500,NULL,1,NULL);
 	xTaskCreate(testLCD,"",500,NULL,1,NULL);
 	xTaskCreate(resetAll,"",500,NULL,1,NULL);
 		
@@ -247,9 +247,13 @@ static portTASK_FUNCTION(testLCD, p_){
 		snprintf(strbuf, sizeof(strbuf), "Read Lgt : %3d",result2);
 		gfx_mono_draw_string(strbuf,0, 16, &sysfont);
 		
-		//print servo
-		snprintf(strbuf, sizeof(strbuf), "Servo : %3d",servotest);
+		//print potentio
+		snprintf(strbuf, sizeof(strbuf), "Heap : %3d",heap);
 		gfx_mono_draw_string(strbuf,0, 24, &sysfont);
+		
+		//print servo
+		//snprintf(strbuf, sizeof(strbuf), "Servo : %3d",servotest);
+		//gfx_mono_draw_string(strbuf,0, 24, &sysfont);
 		
 		//print usart
 		//snprintf(strbuf, sizeof(strbuf),"%3d :%3d :%3d :%3d \n", result,servotest,qtouchtest,heap);

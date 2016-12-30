@@ -66,7 +66,7 @@
 
     1 tab == 4 spaces!
 */
-
+#define configSUPPORT_DYNAMIC_ALLOCATION		1
 #ifndef INC_FREERTOS_H
 #define INC_FREERTOS_H
 

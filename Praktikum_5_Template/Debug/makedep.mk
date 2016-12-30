@@ -46,7 +46,7 @@ src\FreeRTOS\list.c
 
 src\FreeRTOS\portable\GCC\ATXmega256A3BU\port.c
 
-src\FreeRTOS\portable\MemMang\heap_3.c
+src\FreeRTOS\portable\MemMang\heap_4.c
 
 src\FreeRTOS\queue.c
 

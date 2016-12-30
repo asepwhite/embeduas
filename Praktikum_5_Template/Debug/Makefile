@@ -109,7 +109,7 @@ C_SRCS +=  \
 ../src/FreeRTOS/event_groups.c \
 ../src/FreeRTOS/list.c \
 ../src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.c \
-../src/FreeRTOS/portable/MemMang/heap_3.c \
+../src/FreeRTOS/portable/MemMang/heap_4.c \
 ../src/FreeRTOS/queue.c \
 ../src/FreeRTOS/tasks.c \
 ../src/FreeRTOS/timers.c \
@@ -149,7 +149,7 @@ src/FreeRTOS/croutine.o \
 src/FreeRTOS/event_groups.o \
 src/FreeRTOS/list.o \
 src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o \
-src/FreeRTOS/portable/MemMang/heap_3.o \
+src/FreeRTOS/portable/MemMang/heap_4.o \
 src/FreeRTOS/queue.o \
 src/FreeRTOS/tasks.o \
 src/FreeRTOS/timers.o \
@@ -180,7 +180,7 @@ src/FreeRTOS/croutine.o \
 src/FreeRTOS/event_groups.o \
 src/FreeRTOS/list.o \
 src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.o \
-src/FreeRTOS/portable/MemMang/heap_3.o \
+src/FreeRTOS/portable/MemMang/heap_4.o \
 src/FreeRTOS/queue.o \
 src/FreeRTOS/tasks.o \
 src/FreeRTOS/timers.o \
@@ -211,7 +211,7 @@ src/FreeRTOS/croutine.d \
 src/FreeRTOS/event_groups.d \
 src/FreeRTOS/list.d \
 src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.d \
-src/FreeRTOS/portable/MemMang/heap_3.d \
+src/FreeRTOS/portable/MemMang/heap_4.d \
 src/FreeRTOS/queue.d \
 src/FreeRTOS/tasks.d \
 src/FreeRTOS/timers.d \
@@ -242,7 +242,7 @@ src/FreeRTOS/croutine.d \
 src/FreeRTOS/event_groups.d \
 src/FreeRTOS/list.d \
 src/FreeRTOS/portable/GCC/ATXmega256A3BU/port.d \
-src/FreeRTOS/portable/MemMang/heap_3.d \
+src/FreeRTOS/portable/MemMang/heap_4.d \
 src/FreeRTOS/queue.d \
 src/FreeRTOS/tasks.d \
 src/FreeRTOS/timers.d \

@@ -16,6 +16,7 @@
 #define configMAX_TASK_NAME_LEN                         ( 8 )
 #define configUSE_16_BIT_TICKS                          1
 #define configIDLE_SHOULD_YIELD                         1
+#define configTOTAL_HEAP_SIZE	                        15000
 /*#define configSUPPORT_DYNAMIC_ALLOCATION                1*/
 
 
