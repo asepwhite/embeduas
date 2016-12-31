@@ -376,7 +376,7 @@ static portTASK_FUNCTION(testUsart, p_){
 				sendString("Status OK, helm aman");
 			}else{
 				sendString("Status pemakaian helm : belum aman \n");
-				tftftf
+				
 			}
 		}
 		
