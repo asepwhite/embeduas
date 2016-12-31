@@ -47,10 +47,11 @@ static char strbuf[201];
 static char sendbuff[201];
 static char reads[100];
 static char buffarray[200];
-char in = 'x';
+//char in = '0';
 uint16_t result = 0;
 uint16_t result2 = 0;
 //int usarttest = 0;
+int command = 0;
 int potensiotest = 0;
 int servotest = 0;
 int qtouchtest = 0;
@@ -62,7 +63,7 @@ int distance = 0;
 int door = 0;
 int heap = 0;
 long increment = 0;
-static char strbuf[201];
+
 
 static portTASK_FUNCTION_PROTO(testPotentio, p_);
 static portTASK_FUNCTION_PROTO(testLight, p_);
@@ -73,7 +74,8 @@ static portTASK_FUNCTION_PROTO(testLCD, p_);
 static portTASK_FUNCTION_PROTO(resetAll,p_);
 static portTASK_FUNCTION_PROTO(testUsart,p_);
 static portTASK_FUNCTION_PROTO(testHeap,p_);
-
+static portTASK_FUNCTION_PROTO(testRead,p_);
+static portTASK_FUNCTION_PROTO(resetAll,p_);
 void vTimerCallback(){
 	increment++;
 }
@@ -206,8 +208,8 @@ int main (void)
 	ioport_set_pin_level(LCD_BACKLIGHT_ENABLE_PIN, 1);
 	PORTE_OUTSET = PIN3_bm; // PC3 as TX
 	PORTE_DIRSET = PIN3_bm; //TX pin as output
-	//PORTE_OUTCLR = PIN2_bm; //PC2 as RX
-	//PORTE_DIRCLR = PIN2_bm; //RX pin as input
+	PORTE_OUTCLR = PIN2_bm; //PC2 as RX
+	PORTE_DIRCLR = PIN2_bm; //RX pin as input
 	setUpSerial();
 	static usart_rs232_options_t USART_SERIAL_OPTIONS = {
 		.baudrate = USART_SERIAL_EXAMPLE_BAUDRATE,
@@ -223,11 +225,12 @@ int main (void)
 	xTaskCreate(testServo,"",500,NULL,1,NULL);
 	xTaskCreate(testQtouch,"",500,NULL,1,NULL);
 	xTaskCreate(testLight,"",500,NULL,1,NULL);
-	xTaskCreate(testUsart,"",500,NULL,1,NULL);
+	xTaskCreate(testRead,"",500,NULL,1,NULL);
 	xTaskCreate(testHeap,"",500,NULL,1,NULL);
+	xTaskCreate(testUsart,"",500,NULL,1,NULL);
 	xTaskCreate(testLCD,"",500,NULL,1,NULL);
-	xTaskCreate(resetAll,"",500,NULL,1,NULL);
-		
+	//xTaskCreate(resetAll,"",500,NULL,1,NULL);
+	
 	xTimerStart(timerPing, 0);
 	
 	vTaskStartScheduler();
@@ -333,13 +336,60 @@ static portTASK_FUNCTION(testLight, p_){
 static portTASK_FUNCTION(testUsart, p_){
 	while(1){
 		
-		snprintf(sendbuff, sizeof(sendbuff),"%3d :%3d :%3d :%3d \n", result,servotest,qtouchtest,heap);
+		//snprintf(sendbuff, sizeof(sendbuff),"%3d :%3d :%3d :%3d \n", result,servotest,qtouchtest,heap);
 		//gfx_mono_draw_string(strbuf,0, 24, &sysfont);
+		if(command==1){
+			snprintf(sendbuff,sizeof(sendbuff),"Free Heap = %3d \n",heap);
+			sendString(sendbuff);
+		}else if(command == 2){
+			if(qtouchtest > 0){
+				sendString("Sidik jari terdeteksi(qtouch)\n");
+			}else{
+				sendString("Sidik jari tidak terdeteksi(qtouch)\n");
+			}
+		}else if(command == 3){
+			if(result2<=2000){
+				snprintf(sendbuff,sizeof(sendbuff),"Helm sudah dikenakan (lightsensor)[%3d] \n",result2);
+				sendString(sendbuff);
+			}else{
+				snprintf(sendbuff,sizeof(sendbuff),"Helm belum dikenakan (lightsensor)[%3d] \n",result2);
+				sendString(sendbuff);				
+			}
+		}else if(command == 4){
+			if(result<=2000){
+				snprintf(sendbuff,sizeof(sendbuff),"Kandungan alkohol masih dalam batas normal(potentio)[%3d] \n",result);
+				sendString(sendbuff);				
+			}else{
+				snprintf(sendbuff,sizeof(sendbuff),"Kandungan alkohol masih diatas batas normal(potentio)[%3d] \n",result);
+				sendString(sendbuff);				
+			}
+		}else if(command == 5){
+			if(servotest > 0){
+				sendString("Tali helm sudah dikunci \n");
+			}else{
+				sendString("Tali helm belum dikunci\n");
+			}
+		}else if(command == 6){
+			if(qtouchtest > 0 && result2 <= 2000 && result <= 2000 && servotest>0){
+				sendString("Status OK, helm aman");
+			}else{
+				sendString("Status pemakaian helm : belum aman \n");
+			}
+		}
+		
+		
 		sendString(sendbuff);
 		
 		vTaskDelay(10/portTICK_PERIOD_MS);
 	}
 }
+static portTASK_FUNCTION(testRead, p_){
+	while(1){
+		command= receiveChar() - '0';
+		vTaskDelay(10/portTICK_PERIOD_MS);
+	}
+}
+
 static portTASK_FUNCTION(resetAll, p_){
 
 	while(1){
