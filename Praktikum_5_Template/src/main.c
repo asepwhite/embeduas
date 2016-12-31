@@ -38,12 +38,13 @@
 #define MY_ADC_CH ADC_CH0
 #define MY_ADC2    ADCA
 #define MY_ADC2_CH ADC_CH1
-#define USART_SERIAL_EXAMPLE             &USARTC0
+#define USART_SERIAL_EXAMPLE             &USARTE0
 #define USART_SERIAL_EXAMPLE_BAUDRATE    9600
 #define USART_SERIAL_CHAR_LENGTH         USART_CHSIZE_8BIT_gc
 #define USART_SERIAL_PARITY              USART_PMODE_DISABLED_gc
 #define USART_SERIAL_STOP_BIT            false
 static char strbuf[201];
+static char sendbuff[201];
 static char reads[100];
 static char buffarray[200];
 char in = 'x';
@@ -149,22 +150,22 @@ static uint16_t adc_read2(){
 
 void setUpSerial()
 {
-	USARTC0_BAUDCTRLB = 0; //memastikan BSCALE = 0
-	USARTC0_BAUDCTRLA = 0x0C; // 12
+	USARTE0_BAUDCTRLB = 0; //memastikan BSCALE = 0
+	USARTE0_BAUDCTRLA = 0x0C; // 12
 	
 	//Disable interrupts, just for safety
-	USARTC0_CTRLA = 0;
+	USARTE0_CTRLA = 0;
 	//8 data bits, no parity and 1 stop bit
-	USARTC0_CTRLC = USART_CHSIZE_8BIT_gc;
+	USARTE0_CTRLC = USART_CHSIZE_8BIT_gc;
 	
 	//Enable receive and transmit
-	USARTC0_CTRLB = USART_TXEN_bm | USART_RXEN_bm;
+	USARTE0_CTRLB = USART_TXEN_bm | USART_RXEN_bm;
 }
 
 void sendChar(char c)
 {
-	while( !(USARTC0_STATUS & USART_DREIF_bm) ); //Wait until DATA buffer is empty
-	USARTC0_DATA = c;
+	while( !(USARTE0_STATUS & USART_DREIF_bm) ); //Wait until DATA buffer is empty
+	USARTE0_DATA = c;
 }
 
 void sendString(char *text)
@@ -177,8 +178,8 @@ void sendString(char *text)
 
 char receiveChar()
 {
-	while( !(USARTC0_STATUS & USART_RXCIF_bm) ); //Wait until receive finish
-	return USARTC0_DATA;
+	while( !(USARTE0_STATUS & USART_RXCIF_bm) ); //Wait until receive finish
+	return USARTE0_DATA;
 }
 
 void receiveString()
@@ -203,8 +204,10 @@ int main (void)
 	adc_init2();
 	gfx_mono_init();
 	ioport_set_pin_level(LCD_BACKLIGHT_ENABLE_PIN, 1);
-	PORTC_OUTSET = PIN3_bm; // PC3 as TX
-	PORTC_DIRSET = PIN3_bm; //TX pin as output
+	PORTE_OUTSET = PIN3_bm; // PC3 as TX
+	PORTE_DIRSET = PIN3_bm; //TX pin as output
+	//PORTE_OUTCLR = PIN2_bm; //PC2 as RX
+	//PORTE_DIRCLR = PIN2_bm; //RX pin as input
 	setUpSerial();
 	static usart_rs232_options_t USART_SERIAL_OPTIONS = {
 		.baudrate = USART_SERIAL_EXAMPLE_BAUDRATE,
@@ -247,7 +250,7 @@ static portTASK_FUNCTION(testLCD, p_){
 		snprintf(strbuf, sizeof(strbuf), "Read Lgt : %3d",result2);
 		gfx_mono_draw_string(strbuf,0, 16, &sysfont);
 		
-		//print potentio
+		//print heap
 		snprintf(strbuf, sizeof(strbuf), "Heap : %3d",heap);
 		gfx_mono_draw_string(strbuf,0, 24, &sysfont);
 		
@@ -330,9 +333,9 @@ static portTASK_FUNCTION(testLight, p_){
 static portTASK_FUNCTION(testUsart, p_){
 	while(1){
 		
-		snprintf(strbuf, sizeof(strbuf),"%3d :%3d :%3d :%3d \n", result,servotest,qtouchtest,heap);
+		snprintf(sendbuff, sizeof(sendbuff),"%3d :%3d :%3d :%3d \n", result,servotest,qtouchtest,heap);
 		//gfx_mono_draw_string(strbuf,0, 24, &sysfont);
-		sendString(strbuf);
+		sendString(sendbuff);
 		
 		vTaskDelay(10/portTICK_PERIOD_MS);
 	}

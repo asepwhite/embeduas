@@ -7,7 +7,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   1 .data         0000006c  00802000  00004174  00004208  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00003e01  0080206c  0080206c  00004274  2**0
+  2 .bss          00003eca  0080206c  0080206c  00004274  2**0
                   ALLOC
   3 .comment      0000005c  00000000  00000000  00004274  2**0
                   CONTENTS, READONLY
@@ -15,21 +15,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000720  00000000  00000000  00004318  2**3
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00012c26  00000000  00000000  00004a38  2**0
+  6 .debug_info   00012c3a  00000000  00000000  00004a38  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 0000323a  00000000  00000000  0001765e  2**0
+  7 .debug_abbrev 0000323a  00000000  00000000  00017672  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000b871  00000000  00000000  0001a898  2**0
+  8 .debug_line   0000b1e2  00000000  00000000  0001a8ac  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000017f8  00000000  00000000  0002610c  2**2
+  9 .debug_frame  000017f8  00000000  00000000  00025a90  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00035909  00000000  00000000  00027904  2**0
+ 10 .debug_str    00035915  00000000  00000000  00027288  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00009dcb  00000000  00000000  0005d20d  2**0
+ 11 .debug_loc    00009dcb  00000000  00000000  0005cb9d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000988  00000000  00000000  00066fd8  2**3
+ 12 .debug_ranges 00000988  00000000  00000000  00066968  2**3
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_macro  0000c88e  00000000  00000000  00067960  2**0
+ 13 .debug_macro  0000c88e  00000000  00000000  000672f0  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -421,7 +421,7 @@ Disassembly of section .text:
      306:	88 80       	ld	r8, Y
      308:	80 80       	ld	r8, Z
      30a:	88 70       	andi	r24, 0x08	; 8
-     30c:	e0 90 88 88 	lds	r14, 0x8888	; 0x808888 <__bss_end+0x2a1b>
+     30c:	e0 90 88 88 	lds	r14, 0x8888	; 0x808888 <__bss_end+0x2952>
      310:	88 90       	.word	0x9088	; ????
      312:	e0 f8       	bld	r14, 0
      314:	80 80       	ld	r8, Z
@@ -443,7 +443,7 @@ Disassembly of section .text:
      334:	20 70       	andi	r18, 0x00	; 0
      336:	38 10       	cpse	r3, r8
      338:	10 10       	cpse	r1, r0
-     33a:	10 90 60 88 	lds	r1, 0x8860	; 0x808860 <__bss_end+0x29f3>
+     33a:	10 90 60 88 	lds	r1, 0x8860	; 0x808860 <__bss_end+0x292a>
      33e:	90 a0       	ldd	r9, Z+32	; 0x20
      340:	c0 a0       	ldd	r12, Z+32	; 0x20
      342:	90 88       	ldd	r9, Z+16	; 0x10
@@ -470,7 +470,7 @@ Disassembly of section .text:
      36c:	90 68       	ori	r25, 0x80	; 128
      36e:	f0 88       	ldd	r15, Z+16	; 0x10
      370:	88 f0       	brcs	.+34     	; 0x394 <__trampolines_end+0x184>
-     372:	a0 90 88 78 	lds	r10, 0x7888	; 0x807888 <__bss_end+0x1a1b>
+     372:	a0 90 88 78 	lds	r10, 0x7888	; 0x807888 <__bss_end+0x1952>
      376:	80 80       	ld	r8, Z
      378:	70 08       	sbc	r7, r0
      37a:	08 f0       	brcs	.+2      	; 0x37e <__trampolines_end+0x16e>
@@ -644,7 +644,7 @@ Disassembly of section .text:
      4ca:	d9 f7       	brne	.-10     	; 0x4c2 <__do_copy_data+0x10>
 
 000004cc <__do_clear_bss>:
-     4cc:	2e e5       	ldi	r18, 0x5E	; 94
+     4cc:	2f e5       	ldi	r18, 0x5F	; 95
      4ce:	ac e6       	ldi	r26, 0x6C	; 108
      4d0:	b0 e2       	ldi	r27, 0x20	; 32
      4d2:	01 c0       	rjmp	.+2      	; 0x4d6 <.do_clear_bss_start>
@@ -653,7 +653,7 @@ Disassembly of section .text:
      4d4:	1d 92       	st	X+, r1
 
 000004d6 <.do_clear_bss_start>:
-     4d6:	ad 36       	cpi	r26, 0x6D	; 109
+     4d6:	a6 33       	cpi	r26, 0x36	; 54
      4d8:	b2 07       	cpc	r27, r18
      4da:	e1 f7       	brne	.-8      	; 0x4d4 <.do_clear_bss_loop>
      4dc:	0e 94 be 1c 	call	0x397c	; 0x397c <main>
@@ -3257,8 +3257,8 @@ static inline irqflags_t cpu_irq_save(void)
 	flags = cpu_irq_save();
 
 	++sleepmgr_locks[mode];
-     ea6:	e3 e6       	ldi	r30, 0x63	; 99
-     ea8:	fe e5       	ldi	r31, 0x5E	; 94
+     ea6:	ec e2       	ldi	r30, 0x2C	; 44
+     ea8:	ff e5       	ldi	r31, 0x5F	; 95
      eaa:	81 81       	ldd	r24, Z+1	; 0x01
      eac:	8f 5f       	subi	r24, 0xFF	; 255
      eae:	81 83       	std	Z+1, r24	; 0x01
@@ -3307,8 +3307,8 @@ ISR(ADCA_CH0_vect)
 	adca_callback(&ADCA, ADC_CH0, adc_get_result(&ADCA, ADC_CH0));
      ee0:	40 91 24 02 	lds	r20, 0x0224	; 0x800224 <__TEXT_REGION_LENGTH__+0x700224>
      ee4:	50 91 25 02 	lds	r21, 0x0225	; 0x800225 <__TEXT_REGION_LENGTH__+0x700225>
-     ee8:	e0 91 6b 5e 	lds	r30, 0x5E6B	; 0x805e6b <adca_callback>
-     eec:	f0 91 6c 5e 	lds	r31, 0x5E6C	; 0x805e6c <adca_callback+0x1>
+     ee8:	e0 91 34 5f 	lds	r30, 0x5F34	; 0x805f34 <adca_callback>
+     eec:	f0 91 35 5f 	lds	r31, 0x5F35	; 0x805f35 <adca_callback+0x1>
      ef0:	61 e0       	ldi	r22, 0x01	; 1
      ef2:	80 e0       	ldi	r24, 0x00	; 0
      ef4:	92 e0       	ldi	r25, 0x02	; 2
@@ -3363,8 +3363,8 @@ ISR(ADCA_CH1_vect)
 	adca_callback(&ADCA, ADC_CH1, adc_get_result(&ADCA, ADC_CH1));
      f44:	40 91 2c 02 	lds	r20, 0x022C	; 0x80022c <__TEXT_REGION_LENGTH__+0x70022c>
      f48:	50 91 2d 02 	lds	r21, 0x022D	; 0x80022d <__TEXT_REGION_LENGTH__+0x70022d>
-     f4c:	e0 91 6b 5e 	lds	r30, 0x5E6B	; 0x805e6b <adca_callback>
-     f50:	f0 91 6c 5e 	lds	r31, 0x5E6C	; 0x805e6c <adca_callback+0x1>
+     f4c:	e0 91 34 5f 	lds	r30, 0x5F34	; 0x805f34 <adca_callback>
+     f50:	f0 91 35 5f 	lds	r31, 0x5F35	; 0x805f35 <adca_callback+0x1>
      f54:	62 e0       	ldi	r22, 0x02	; 2
      f56:	80 e0       	ldi	r24, 0x00	; 0
      f58:	92 e0       	ldi	r25, 0x02	; 2
@@ -3419,8 +3419,8 @@ ISR(ADCA_CH2_vect)
 	adca_callback(&ADCA, ADC_CH2, adc_get_result(&ADCA, ADC_CH2));
      fa8:	40 91 34 02 	lds	r20, 0x0234	; 0x800234 <__TEXT_REGION_LENGTH__+0x700234>
      fac:	50 91 35 02 	lds	r21, 0x0235	; 0x800235 <__TEXT_REGION_LENGTH__+0x700235>
-     fb0:	e0 91 6b 5e 	lds	r30, 0x5E6B	; 0x805e6b <adca_callback>
-     fb4:	f0 91 6c 5e 	lds	r31, 0x5E6C	; 0x805e6c <adca_callback+0x1>
+     fb0:	e0 91 34 5f 	lds	r30, 0x5F34	; 0x805f34 <adca_callback>
+     fb4:	f0 91 35 5f 	lds	r31, 0x5F35	; 0x805f35 <adca_callback+0x1>
      fb8:	64 e0       	ldi	r22, 0x04	; 4
      fba:	80 e0       	ldi	r24, 0x00	; 0
      fbc:	92 e0       	ldi	r25, 0x02	; 2
@@ -3475,8 +3475,8 @@ ISR(ADCA_CH3_vect)
 	adca_callback(&ADCA, ADC_CH3, adc_get_result(&ADCA, ADC_CH3));
     100c:	40 91 3c 02 	lds	r20, 0x023C	; 0x80023c <__TEXT_REGION_LENGTH__+0x70023c>
     1010:	50 91 3d 02 	lds	r21, 0x023D	; 0x80023d <__TEXT_REGION_LENGTH__+0x70023d>
-    1014:	e0 91 6b 5e 	lds	r30, 0x5E6B	; 0x805e6b <adca_callback>
-    1018:	f0 91 6c 5e 	lds	r31, 0x5E6C	; 0x805e6c <adca_callback+0x1>
+    1014:	e0 91 34 5f 	lds	r30, 0x5F34	; 0x805f34 <adca_callback>
+    1018:	f0 91 35 5f 	lds	r31, 0x5F35	; 0x805f35 <adca_callback+0x1>
     101c:	68 e0       	ldi	r22, 0x08	; 8
     101e:	80 e0       	ldi	r24, 0x00	; 0
     1020:	92 e0       	ldi	r25, 0x02	; 2
@@ -3531,8 +3531,8 @@ ISR(ADCB_CH0_vect)
 	adcb_callback(&ADCB, ADC_CH0, adc_get_result(&ADCB, ADC_CH0));
     1070:	40 91 64 02 	lds	r20, 0x0264	; 0x800264 <__TEXT_REGION_LENGTH__+0x700264>
     1074:	50 91 65 02 	lds	r21, 0x0265	; 0x800265 <__TEXT_REGION_LENGTH__+0x700265>
-    1078:	e0 91 69 5e 	lds	r30, 0x5E69	; 0x805e69 <adcb_callback>
-    107c:	f0 91 6a 5e 	lds	r31, 0x5E6A	; 0x805e6a <adcb_callback+0x1>
+    1078:	e0 91 32 5f 	lds	r30, 0x5F32	; 0x805f32 <adcb_callback>
+    107c:	f0 91 33 5f 	lds	r31, 0x5F33	; 0x805f33 <adcb_callback+0x1>
     1080:	61 e0       	ldi	r22, 0x01	; 1
     1082:	80 e4       	ldi	r24, 0x40	; 64
     1084:	92 e0       	ldi	r25, 0x02	; 2
@@ -3587,8 +3587,8 @@ ISR(ADCB_CH1_vect)
 	adcb_callback(&ADCB, ADC_CH1, adc_get_result(&ADCB, ADC_CH1));
     10d4:	40 91 6c 02 	lds	r20, 0x026C	; 0x80026c <__TEXT_REGION_LENGTH__+0x70026c>
     10d8:	50 91 6d 02 	lds	r21, 0x026D	; 0x80026d <__TEXT_REGION_LENGTH__+0x70026d>
-    10dc:	e0 91 69 5e 	lds	r30, 0x5E69	; 0x805e69 <adcb_callback>
-    10e0:	f0 91 6a 5e 	lds	r31, 0x5E6A	; 0x805e6a <adcb_callback+0x1>
+    10dc:	e0 91 32 5f 	lds	r30, 0x5F32	; 0x805f32 <adcb_callback>
+    10e0:	f0 91 33 5f 	lds	r31, 0x5F33	; 0x805f33 <adcb_callback+0x1>
     10e4:	62 e0       	ldi	r22, 0x02	; 2
     10e6:	80 e4       	ldi	r24, 0x40	; 64
     10e8:	92 e0       	ldi	r25, 0x02	; 2
@@ -3643,8 +3643,8 @@ ISR(ADCB_CH2_vect)
 	adcb_callback(&ADCB, ADC_CH2, adc_get_result(&ADCB, ADC_CH2));
     1138:	40 91 74 02 	lds	r20, 0x0274	; 0x800274 <__TEXT_REGION_LENGTH__+0x700274>
     113c:	50 91 75 02 	lds	r21, 0x0275	; 0x800275 <__TEXT_REGION_LENGTH__+0x700275>
-    1140:	e0 91 69 5e 	lds	r30, 0x5E69	; 0x805e69 <adcb_callback>
-    1144:	f0 91 6a 5e 	lds	r31, 0x5E6A	; 0x805e6a <adcb_callback+0x1>
+    1140:	e0 91 32 5f 	lds	r30, 0x5F32	; 0x805f32 <adcb_callback>
+    1144:	f0 91 33 5f 	lds	r31, 0x5F33	; 0x805f33 <adcb_callback+0x1>
     1148:	64 e0       	ldi	r22, 0x04	; 4
     114a:	80 e4       	ldi	r24, 0x40	; 64
     114c:	92 e0       	ldi	r25, 0x02	; 2
@@ -3699,8 +3699,8 @@ ISR(ADCB_CH3_vect)
 	adcb_callback(&ADCB, ADC_CH3, adc_get_result(&ADCB, ADC_CH3));
     119c:	40 91 7c 02 	lds	r20, 0x027C	; 0x80027c <__TEXT_REGION_LENGTH__+0x70027c>
     11a0:	50 91 7d 02 	lds	r21, 0x027D	; 0x80027d <__TEXT_REGION_LENGTH__+0x70027d>
-    11a4:	e0 91 69 5e 	lds	r30, 0x5E69	; 0x805e69 <adcb_callback>
-    11a8:	f0 91 6a 5e 	lds	r31, 0x5E6A	; 0x805e6a <adcb_callback+0x1>
+    11a4:	e0 91 32 5f 	lds	r30, 0x5F32	; 0x805f32 <adcb_callback>
+    11a8:	f0 91 33 5f 	lds	r31, 0x5F33	; 0x805f33 <adcb_callback+0x1>
     11ac:	68 e0       	ldi	r22, 0x08	; 8
     11ae:	80 e4       	ldi	r24, 0x40	; 64
     11b0:	92 e0       	ldi	r25, 0x02	; 2
@@ -10452,8 +10452,8 @@ static inline void ioport_configure_pin(port_pin_t pin, port_pin_flags_t flags)
     36a0:	9f 2e       	mov	r9, r31
     36a2:	f0 2d       	mov	r31, r0
     36a4:	19 ec       	ldi	r17, 0xC9	; 201
-    36a6:	ca e9       	ldi	r28, 0x9A	; 154
-    36a8:	dd e5       	ldi	r29, 0x5D	; 93
+    36a6:	c3 e6       	ldi	r28, 0x63	; 99
+    36a8:	de e5       	ldi	r29, 0x5E	; 94
     36aa:	0f 2e       	mov	r0, r31
     36ac:	fa e2       	ldi	r31, 0x2A	; 42
     36ae:	af 2e       	mov	r10, r31
@@ -10716,14 +10716,14 @@ static inline void ioport_configure_pin(port_pin_t pin, port_pin_flags_t flags)
     38d6:	df cf       	rjmp	.-66     	; 0x3896 <testServo+0x36>
 
 000038d8 <setUpSerial>:
-    38d8:	10 92 a7 08 	sts	0x08A7, r1	; 0x8008a7 <__TEXT_REGION_LENGTH__+0x7008a7>
+    38d8:	10 92 a7 0a 	sts	0x0AA7, r1	; 0x800aa7 <__TEXT_REGION_LENGTH__+0x700aa7>
     38dc:	8c e0       	ldi	r24, 0x0C	; 12
-    38de:	80 93 a6 08 	sts	0x08A6, r24	; 0x8008a6 <__TEXT_REGION_LENGTH__+0x7008a6>
-    38e2:	10 92 a3 08 	sts	0x08A3, r1	; 0x8008a3 <__TEXT_REGION_LENGTH__+0x7008a3>
+    38de:	80 93 a6 0a 	sts	0x0AA6, r24	; 0x800aa6 <__TEXT_REGION_LENGTH__+0x700aa6>
+    38e2:	10 92 a3 0a 	sts	0x0AA3, r1	; 0x800aa3 <__TEXT_REGION_LENGTH__+0x700aa3>
     38e6:	83 e0       	ldi	r24, 0x03	; 3
-    38e8:	80 93 a5 08 	sts	0x08A5, r24	; 0x8008a5 <__TEXT_REGION_LENGTH__+0x7008a5>
+    38e8:	80 93 a5 0a 	sts	0x0AA5, r24	; 0x800aa5 <__TEXT_REGION_LENGTH__+0x700aa5>
     38ec:	88 e1       	ldi	r24, 0x18	; 24
-    38ee:	80 93 a4 08 	sts	0x08A4, r24	; 0x8008a4 <__TEXT_REGION_LENGTH__+0x7008a4>
+    38ee:	80 93 a4 0a 	sts	0x0AA4, r24	; 0x800aa4 <__TEXT_REGION_LENGTH__+0x700aa4>
     38f2:	08 95       	ret
 
 000038f4 <sendString>:
@@ -10736,7 +10736,7 @@ static inline void ioport_configure_pin(port_pin_t pin, port_pin_flags_t flags)
     3900:	ec 01       	movw	r28, r24
     3902:	21 96       	adiw	r28, 0x01	; 1
     3904:	80 ea       	ldi	r24, 0xA0	; 160
-    3906:	98 e0       	ldi	r25, 0x08	; 8
+    3906:	9a e0       	ldi	r25, 0x0A	; 10
     3908:	0e 94 dc 09 	call	0x13b8	; 0x13b8 <usart_putchar>
     390c:	69 91       	ld	r22, Y+
     390e:	61 11       	cpse	r22, r1
@@ -11000,11 +11000,13 @@ static inline void adc_set_conversion_parameters(struct adc_config *conf,
     3a58:	80 e1       	ldi	r24, 0x10	; 16
     3a5a:	80 93 85 06 	sts	0x0685, r24	; 0x800685 <__TEXT_REGION_LENGTH__+0x700685>
 	ioport_set_pin_level(LCD_BACKLIGHT_ENABLE_PIN, 1);
-	PORTC_OUTSET = PIN3_bm; // PC3 as TX
+	PORTE_OUTSET = PIN3_bm; // PC3 as TX
     3a5e:	88 e0       	ldi	r24, 0x08	; 8
-    3a60:	80 93 45 06 	sts	0x0645, r24	; 0x800645 <__TEXT_REGION_LENGTH__+0x700645>
-	PORTC_DIRSET = PIN3_bm; //TX pin as output
-    3a64:	80 93 41 06 	sts	0x0641, r24	; 0x800641 <__TEXT_REGION_LENGTH__+0x700641>
+    3a60:	80 93 85 06 	sts	0x0685, r24	; 0x800685 <__TEXT_REGION_LENGTH__+0x700685>
+	PORTE_DIRSET = PIN3_bm; //TX pin as output
+    3a64:	80 93 81 06 	sts	0x0681, r24	; 0x800681 <__TEXT_REGION_LENGTH__+0x700681>
+	//PORTE_OUTCLR = PIN2_bm; //PC2 as RX
+	//PORTE_DIRCLR = PIN2_bm; //RX pin as input
 	setUpSerial();
     3a68:	37 df       	rcall	.-402    	; 0x38d8 <setUpSerial>
 		.baudrate = USART_SERIAL_EXAMPLE_BAUDRATE,
@@ -11016,7 +11018,7 @@ static inline void adc_set_conversion_parameters(struct adc_config *conf,
     3a6a:	67 e0       	ldi	r22, 0x07	; 7
     3a6c:	70 e2       	ldi	r23, 0x20	; 32
     3a6e:	80 ea       	ldi	r24, 0xA0	; 160
-    3a70:	98 e0       	ldi	r25, 0x08	; 8
+    3a70:	9a e0       	ldi	r25, 0x0A	; 10
     3a72:	0e 94 fd 0a 	call	0x15fa	; 0x15fa <usart_init_rs232>
 	
 	TimerHandle_t timerPing = xTimerCreate("tPing", 2/portTICK_PERIOD_MS, pdTRUE, (void *) 0, vTimerCallback);
