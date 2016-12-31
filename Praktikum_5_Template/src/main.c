@@ -228,7 +228,7 @@ int main (void)
 	xTaskCreate(testRead,"",500,NULL,1,NULL);
 	xTaskCreate(testHeap,"",500,NULL,1,NULL);
 	xTaskCreate(testUsart,"",500,NULL,1,NULL);
-	xTaskCreate(testLCD,"",500,NULL,1,NULL);
+//	xTaskCreate(testLCD,"",500,NULL,1,NULL);
 	//xTaskCreate(resetAll,"",500,NULL,1,NULL);
 	
 	xTimerStart(timerPing, 0);
@@ -334,8 +334,10 @@ static portTASK_FUNCTION(testLight, p_){
 }
 
 static portTASK_FUNCTION(testUsart, p_){
+	ioport_set_pin_level(LCD_BACKLIGHT_ENABLE_PIN, 1);
 	while(1){
-		
+		snprintf(strbuf,sizeof(strbuf),"Commandnya adalah &3d", command);
+		gfx_mono_draw_string(strbuf,0,0,&sysfont);
 		//snprintf(sendbuff, sizeof(sendbuff),"%3d :%3d :%3d :%3d \n", result,servotest,qtouchtest,heap);
 		//gfx_mono_draw_string(strbuf,0, 24, &sysfont);
 		if(command==1){

@@ -48,11 +48,73 @@
 #include "ui.h"
 #include "uart.h"
 
+#define USART_SERIAL_EXAMPLE             &USARTE0
+#define USART_SERIAL_EXAMPLE_BAUDRATE    9600
+#define USART_SERIAL_CHAR_LENGTH         USART_CHSIZE_8BIT_gc
+#define USART_SERIAL_PARITY              USART_PMODE_DISABLED_gc
+#define USART_SERIAL_STOP_BIT            false
+
 static volatile bool main_b_cdc_enable = false;
 //static char strbuf = 100;
-const void* temp = "";
+char* temp = "";
 static char message [100];
+static char reads[100];
+void setUpSerial()
+{
+	// Baud rate selection
+	// BSEL = (2000000 / (2^0 * 16*9600) -1 = 12.0208... ~ 12 -> BSCALE = 0
+	// FBAUD = ( (2000000)/(2^0*16(12+1)) = 9615.384 -> mendekati lah ya
+	
+	USARTE0_BAUDCTRLB = 0; //memastikan BSCALE = 0
+	USARTE0_BAUDCTRLA = 0x0C; // 12
+	
+	//USARTC0_BAUDCTRLB = 0; //Just to be sure that BSCALE is 0
+	//USARTC0_BAUDCTRLA = 0xCF; // 207
+	
+	
+	//Disable interrupts, just for safety
+	USARTE0_CTRLA = 0;
+	//8 data bits, no parity and 1 stop bit
+	USARTE0_CTRLC = USART_CHSIZE_8BIT_gc;
+	
+	//Enable receive and transmit
+	USARTE0_CTRLB = USART_TXEN_bm | USART_RXEN_bm;
+}
 
+void sendChar(char c)
+{
+	
+	while( !(USARTE0_STATUS & USART_DREIF_bm) ); //Wait until DATA buffer is empty
+	
+	USARTE0_DATA = c;
+	
+}
+
+void sendString(char *text)
+{
+	while(*text)
+	{
+		//sendChar(*text++);
+		usart_putchar(USART_SERIAL_EXAMPLE, *text++);
+	}
+}
+
+char receiveChar()
+{
+	while( !(USARTE0_STATUS & USART_RXCIF_bm) ); //Wait until receive finish
+	return USARTE0_DATA;
+}
+
+void receiveString()
+{
+	int i = 0;
+	while(1){
+		//char inp = receiveChar();
+		char inp = usart_getchar(USART_SERIAL_EXAMPLE);
+		if(inp=='\n') break;
+		else reads[i++] = inp;
+	}
+}
 /*! \brief Main function. Execution starts here.
  */
 int main(void)
@@ -62,18 +124,37 @@ int main(void)
 	cpu_irq_enable();
 	board_init();
 	udc_start();
+	PORTE_OUTSET = PIN3_bm; // PC3 as TX
+	PORTE_DIRSET = PIN3_bm; //TX pin as output
+	
+	PORTE_OUTCLR = PIN2_bm; //PC2 as RX
+	PORTE_DIRCLR = PIN2_bm; //RX pin as input
+	setUpSerial();
+	
+	static usart_rs232_options_t USART_SERIAL_OPTIONS = {
+		.baudrate = USART_SERIAL_EXAMPLE_BAUDRATE,
+		.charlength = USART_SERIAL_CHAR_LENGTH,
+		.paritytype = USART_SERIAL_PARITY,
+		.stopbits = USART_SERIAL_STOP_BIT
+	};
+	
+	usart_init_rs232(USART_SERIAL_EXAMPLE, &USART_SERIAL_OPTIONS);
 	
 	while (true)
 	{	
 		while(!udi_cdc_is_rx_ready()){}	
-		udi_cdc_read_buf(message, sizeof(message));
+		udi_cdc_read_buf(temp, sizeof(temp));
+		char z = temp;
 		
 		//while(!udi_cdc_is_tx_ready()){}
 		//udi_cdc_write_buf(temp, sizeof(temp));
 		
 		while(!udi_cdc_is_tx_ready()){}
 		udi_cdc_write_buf(temp, sizeof(temp));
-		
+		//send char command to RTOS board
+		sendChar(z);
+		//receivestring
+		receiveString();
 	}
 }
 
