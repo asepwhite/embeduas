@@ -32,14 +32,15 @@
     <option id="common.boards" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.services.basic.clock" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.services.delay" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="common.services.gfx_mono" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="common.services.gfx_mono.font" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.services.basic.gpio" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.services.basic.sleepmgr" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.services.usb.class.device" value="Add" config="cdc" content-id="Atmel.ASF" />
     <option id="common.utils.stdio.stdio_serial" value="Add" config="" content-id="Atmel.ASF" />
     <option id="xmega.drivers.ioport" value="Add" config="" content-id="Atmel.ASF" />
     <option id="xmega.drivers.usart" value="Add" config="" content-id="Atmel.ASF" />
-    <option id="common.services.gfx_mono.font" value="Add" config="" content-id="Atmel.ASF" />
-    <option id="common.services.gfx_mono" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="common.services.basic.serial" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.services.usb.class.cdc.device.example" value="Add" config="" content-id="Atmel.ASF" />
   </options>
   <configurations>
@@ -163,7 +164,7 @@
   <documentation help="http://asf.atmel.com/docs/3.32.0/common.services.usb.class.cdc.device.example.atxmega256a3bu_xmega_a3bu_xplained/html/index.html" />
   <offline-documentation help="" />
   <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.22.0" />
+    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.32.0" />
   </dependencies>
   <project id="common.services.usb.class.cdc.device.example.atxmega256a3bu_xmega_a3bu_xplained" value="Add" config="" content-id="Atmel.ASF" />
   <board id="board.xmega_a3bu_xplained" value="Add" config="" content-id="Atmel.ASF" />

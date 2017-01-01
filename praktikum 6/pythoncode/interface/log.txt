@@ -1,0 +1,905 @@
+ini eksperiment free heap
+***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 10257                                                                                   
+Round Trip Time : 508.5768699645996***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 10257                                                                                   
+Round Trip Time : 508.3608627319336***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+                                                                                                                      Free Heap = 10257                                                                                                         
+Round Trip Time : 520.763635635376***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+                                                                                                                                   Free Heap = 10257                                                                                                    
+Round Trip Time : 521.7812061309814***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+                                                                                                                                        Free Heap = 10257                                                                                                        
+Round Trip Time : 522.5086212158203***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+                                                            Free Heap = 10257                                                                                                      
+Round Trip Time : 516.960859298706***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+                                                 Free Heap = 10257                                                                                                       
+Round Trip Time : 514.0762329101562***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+                                           Free Heap = 10257                                                                                                   
+Round Trip Time : 514.9450302124023***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+                                      Free Heap = 10257                                                                                                     
+Round Trip Time : 514.3547058105469***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+                                         Free Heap = 10257                                                                                                     
+Round Trip Time : 513.9691829681396***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+     Free Heap = 10257                                                                                           
+Round Trip Time : 510.0700855255127***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+   Free Heap = 10257                                                                                                 
+Round Trip Time : 503.4976005554199***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+     Free Heap = 10257                                                                                                        
+Round Trip Time : 513.5898590087891***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+     Free Heap = 10257                                                                                                       
+Round Trip Time : 510.73718070983887***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+      Free Heap = 10257                                                                                                       
+Round Trip Time : 510.7405185699463***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+       Free Heap = 10257                                                                                              
+Round Trip Time : 504.83155250549316***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+     Free Heap = 10257                                                                                                  
+Round Trip Time : 503.2815933227539***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+   Free Heap = 10257                                                                                                          
+Round Trip Time : 509.99999046325684***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+        Free Heap = 10257                                                                                                  
+Round Trip Time : 504.67967987060547***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+  Free Heap = 10257                                                                                                
+Round Trip Time : 511.1072063446045***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+          Free Heap = 10257                                                                                                  
+Round Trip Time : 510.7858180999756***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+ Free Heap = 10257                                                                                                          
+Round Trip Time : 502.9900074005127***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+   Free Heap = 10257                                                                                            
+Round Trip Time : 510.37120819091797***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+  Free Heap = 10257                                                                                      
+Round Trip Time : 510.0290775299072***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+      Free Heap = 10257                                                                                                       
+Round Trip Time : 510.7395648956299***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+   Free Heap = 10257                                                                                                         
+Round Trip Time : 512.0267868041992***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+    Free Heap = 10257                                                                                                         
+Round Trip Time : 511.1041069030762***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+     Free Heap = 10257                                                                                                        
+***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+                                                                                      Free Heap = 10257                                                                                                     
+Round Trip Time : 517.4322128295898***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+                                                                Free Heap = 10257                                                                                   
+Round Trip Time : 514.3618583679199***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 10257                                                                                   
+Round Trip Time : 509.32955741882324***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 10257                                                                                   
+Round Trip Time : 509.3860626220703***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 10257                                                                                   
+Round Trip Time : 510.04624366760254***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 10257                                                                                   
+Round Trip Time : 508.5017681121826***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 10257                                                                                   
+Round Trip Time : 510.845422744751***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 10257                                                                                   
+Round Trip Time : 515.0892734527588***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 10257                                                                                   
+Round Trip Time : 510.59865951538086***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 10257                                                                                   
+Round Trip Time : 509.31358337402344***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 10257                                                                                   
+Round Trip Time : 510.9376907348633***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 10257                                                                                   
+Round Trip Time : 508.65721702575684***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 10257                                                                                   
+Round Trip Time : 509.1373920440674***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Exiting Command Line Interface.....***** Command Line Interface *****
+
+
+ini eksperiment sidik jari, potensio, light sensor, servo dan helmet status
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Sidik jari tidak terdeteksi(qtouch)                                                                 
+Round Trip Time : 509.063720703125***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Sidik jari tidak terdeteksi(qtouch)                                                                 
+Round Trip Time : 508.9883804321289***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Sidik jari tidak terdeteksi(qtouch)                                                                 
+Round Trip Time : 509.3653202056885***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Sidik jari tidak terdeteksi(qtouch)                                                                 
+Round Trip Time : 509.4120502471924***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Sidik jari tidak terdeteksi(qtouch)                                                                 
+Round Trip Time : 508.8958740234375***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Sidik jari tidak terdeteksi(qtouch)                                                                 
+Round Trip Time : 509.05489921569824***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Helm sudah dikenakan (lightsensor)[441]                                                             
+Round Trip Time : 508.4507465362549***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Helm sudah dikenakan (lightsensor)[412]                                                             
+Round Trip Time : 509.17768478393555***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Helm sudah dikenakan (lightsensor)[431]                                                             
+Round Trip Time : 508.0757141113281***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Helm sudah dikenakan (lightsensor)[421]                                                             
+Round Trip Time : 508.4857940673828***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Helm sudah dikenakan (lightsensor)[397]                                                             
+Round Trip Time : 508.744478225708***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Kandungan alkohol masih diatas batas normal(potentio)[2960]                                         
+Round Trip Time : 508.99457931518555***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Kandungan alkohol masih diatas batas normal(potentio)[2965]                                         
+Round Trip Time : 508.7902545928955***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Kandungan alkohol masih diatas batas normal(potentio)[2965]                                         
+Round Trip Time : 504.88877296447754***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Kandungan alkohol masih diatas batas normal(potentio)[2960]                                         
+Round Trip Time : 510.24508476257324***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Kandungan alkohol masih diatas batas normal(potentio)[2963]                                         
+Round Trip Time : 508.93449783325195***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Tali helm belum dikunci                                                                             
+Round Trip Time : 508.33892822265625***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Tali helm belum dikunci                                                                             
+Round Trip Time : 510.94579696655273***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Tali helm belum dikunci                                                                             
+Round Trip Time : 509.4492435455322***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Tali helm belum dikunci                                                                             
+Round Trip Time : 509.9053382873535***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Tali helm belum dikunci                                                                             
+Round Trip Time : 509.1519355773926***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Status pemakaian helm : belum aman                                                                  
+Round Trip Time : 508.4686279296875***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Status pemakaian helm : belum aman                                                                  
+Round Trip Time : 508.7261199951172***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Status pemakaian helm : belum aman                                                                  
+Round Trip Time : 509.5794200897217***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Status pemakaian helm : belum aman                                                                  
+Round Trip Time : 509.2456340789795***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Status pemakaian helm : belum aman                                                                  
+Round Trip Time : 510.06150245666504***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Status pemakaian helm : belum aman                                                                  
+Round Trip Time : 509.3357563018799***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Exiting Command Line Interface.....***** Command Line Interface *****
+
+
+ini eksperiment test case ketika helm bisa dipake
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+                                                                Status OK, helm aman                                                                                
+Round Trip Time : 515.350341796875***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Status OK, helm aman                                                                                
+Round Trip Time : 508.4061622619629***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+ Free Heap = 10257                                                                                   
+Round Trip Time : 510.28966903686523***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Sidik jari tidak terdeteksi(qtouch)                                                                 
+Round Trip Time : 509.33122634887695***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Helm sudah dikenakan (lightsensor)[450]                                                             
+Round Trip Time : 509.26804542541504***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Kandungan alkohol masih dalam batas normal(potentio)[1173]                                          
+Round Trip Time : 508.512020111084***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Tali helm sudah dikunci                                                                             
+Round Trip Time : 508.4264278411865***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Status OK, helm aman                                                                                
+Round Trip Time : 509.86409187316895***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Exiting Command Line Interface.....***** Command Line Interface *****
+Ini eksperiment buat nguraning task, nambahin nilai heap
+***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+                                                                Sidik jari tidak terdeteksi(qtouch)                                                                 
+Round Trip Time : 513.7863159179688***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Sidik jari tidak terdeteksi(qtouch)                                                                 
+Round Trip Time : 509.89842414855957***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 12441                                                                                   
+Round Trip Time : 508.1493854522705***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 12441                                                                                   
+Round Trip Time : 508.4259510040283***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 12441                                                                                   
+Round Trip Time : 509.1900825500488***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 12441                                                                                   
+Round Trip Time : 508.49294662475586***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Exiting Command Line Interface.....***** Command Line Interface *****
+ini juga nambain task, ngurangin nilai heap
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 11349                                                                                   
+Round Trip Time : 510.1971626281738***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Free Heap = 11349                                                                                   
+Round Trip Time : 509.2606544494629***** Command Line Interface *****
+Feature : 
+1.Free Heap
+2.Qtouch
+3.Light Sensor
+4.Potentio
+5.Servo
+6.Helmet Status
+Please Input Your Command :
+Exiting Command Line Interface.....

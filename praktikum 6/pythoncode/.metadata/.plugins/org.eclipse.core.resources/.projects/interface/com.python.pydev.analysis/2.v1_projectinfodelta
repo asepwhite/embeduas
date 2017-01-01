@@ -1,7 +1,11 @@
 INSTUPinterface
 C:\Users\Akbar Septriyan\Documents\Atmel Studio\7.0\praktikum 6\pythoncode\interface\interface.py
-INFOS:&&3|1|2|0&&3|3|2|0&&3|4|2|0&&3|4|2|0
+INFOS:&&3|1|2|0&&3|3|2|0&&3|4|2|0&&3|4|2|0&&3|3|2|0&&3|4|2|0&&3|4|2|0&&3|5|2|0&&3|6|2|0&&3|7|2|0&&3|7|2|0&&3|6|2|0&&3|8|2|0
 ser=1
+varinfinite=3
+varreceivetime=8
+varresult=6
+vartemp=7
 interface=2
-varb=4
-varlala=3
+varsendtime=5
+command=4

@@ -1,0 +1,23 @@
+import serial
+import time
+ser = serial.Serial('COM4', 9600)  # open serial port
+varinfinite = 1
+while varinfinite == 1:
+    command = input("***** Command Line Interface *****\nFeature : \n1.Free Heap\n2.Qtouch\n3.Light Sensor\n4.Potentio\n5.Serv0\n6.Helmet Status\nPlease Input Your Command :\n")
+    command = int(command)
+    if command > 6:
+        print("Invalid Command, Please Try Again.....")
+    elif command == 0:
+        print("Exiting Command Line Interface.....")
+        varinfinite = 0
+    else:
+        command = str(command)        
+        command = "___"+command
+        ser.write(str.encode(command))
+        time.sleep(1)
+        varresult = ""
+        while ser.inWaiting() > 0:
+            vartemp = ser.read(1)
+            print(vartemp)
+        #ser.write(b'test')     # write a string
+ser.close()             # close port

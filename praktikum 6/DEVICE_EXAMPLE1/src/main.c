@@ -55,22 +55,14 @@
 #define USART_SERIAL_STOP_BIT            false
 
 static volatile bool main_b_cdc_enable = false;
-//static char strbuf = 100;
-char* temp = "";
-static char message [100];
+char* value = "";
+char command = '0';
 static char reads[100];
 void setUpSerial()
 {
-	// Baud rate selection
-	// BSEL = (2000000 / (2^0 * 16*9600) -1 = 12.0208... ~ 12 -> BSCALE = 0
-	// FBAUD = ( (2000000)/(2^0*16(12+1)) = 9615.384 -> mendekati lah ya
-	
+
 	USARTE0_BAUDCTRLB = 0; //memastikan BSCALE = 0
 	USARTE0_BAUDCTRLA = 0x0C; // 12
-	
-	//USARTC0_BAUDCTRLB = 0; //Just to be sure that BSCALE is 0
-	//USARTC0_BAUDCTRLA = 0xCF; // 207
-	
 	
 	//Disable interrupts, just for safety
 	USARTE0_CTRLA = 0;
@@ -109,10 +101,13 @@ void receiveString()
 {
 	int i = 0;
 	while(1){
-		//char inp = receiveChar();
 		char inp = usart_getchar(USART_SERIAL_EXAMPLE);
 		if(inp=='\n') break;
 		else reads[i++] = inp;
+	}
+	while(1){
+		if(i>=90) break;
+		else reads[i++] = ' ';
 	}
 }
 /*! \brief Main function. Execution starts here.
@@ -143,18 +138,12 @@ int main(void)
 	while (true)
 	{	
 		while(!udi_cdc_is_rx_ready()){}	
-		udi_cdc_read_buf(temp, sizeof(temp));
-		char z = temp;
-		
-		//while(!udi_cdc_is_tx_ready()){}
-		//udi_cdc_write_buf(temp, sizeof(temp));
-		
-		while(!udi_cdc_is_tx_ready()){}
-		udi_cdc_write_buf(temp, sizeof(temp));
-		//send char command to RTOS board
-		sendChar(z);
-		//receivestring
+		command = udi_cdc_getc();
+		sendChar(command);
 		receiveString();
+		while(!udi_cdc_is_tx_ready()){}
+		udi_cdc_write_buf(reads, sizeof(reads));
+		
 	}
 }
 
