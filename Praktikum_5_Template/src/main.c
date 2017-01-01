@@ -228,7 +228,7 @@ int main (void)
 	xTaskCreate(testRead,"",500,NULL,1,NULL);
 	xTaskCreate(testHeap,"",500,NULL,1,NULL);
 	xTaskCreate(testUsart,"",500,NULL,1,NULL);
-//	xTaskCreate(testLCD,"",500,NULL,1,NULL);
+	xTaskCreate(testLCD,"",500,NULL,1,NULL);
 	//xTaskCreate(resetAll,"",500,NULL,1,NULL);
 	
 	xTimerStart(timerPing, 0);
@@ -246,20 +246,18 @@ static portTASK_FUNCTION(testLCD, p_){
 		gfx_mono_draw_string(strbuf,0, 0, &sysfont);
 		
 		//print qtouch
-		snprintf(strbuf, sizeof(strbuf), "Qtouch : %3d",qtouchtest);
+		snprintf(strbuf, sizeof(strbuf), "QT|SRV %3d|%3d",qtouchtest,servotest);
 		gfx_mono_draw_string(strbuf,0, 8, &sysfont);
-		
 		//print potentio
-		snprintf(strbuf, sizeof(strbuf), "Read Lgt : %3d",result2);
+		snprintf(strbuf, sizeof(strbuf), "Light : %3d",result2);
 		gfx_mono_draw_string(strbuf,0, 16, &sysfont);
 		
 		//print heap
-		snprintf(strbuf, sizeof(strbuf), "Heap : %3d",heap);
+		snprintf(strbuf, sizeof(strbuf), "Heap|Req %3d|%3d ",heap,command);
 		gfx_mono_draw_string(strbuf,0, 24, &sysfont);
-		
-		//print servo
-		//snprintf(strbuf, sizeof(strbuf), "Servo : %3d",servotest);
-		//gfx_mono_draw_string(strbuf,0, 24, &sysfont);
+		//command
+		//snprintf(strbuf,sizeof(strbuf),"Request %3d", command);
+		//gfx_mono_draw_string(strbuf,0,32,&sysfont);
 		
 		//print usart
 		//snprintf(strbuf, sizeof(strbuf),"%3d :%3d :%3d :%3d \n", result,servotest,qtouchtest,heap);
@@ -267,7 +265,7 @@ static portTASK_FUNCTION(testLCD, p_){
 		//sendString(strbuf);
 		
 		
-		vTaskDelay(5/portTICK_PERIOD_MS);
+		vTaskDelay(100/portTICK_PERIOD_MS);
 	}
 }
 static portTASK_FUNCTION(testPotentio, p_){
@@ -334,13 +332,11 @@ static portTASK_FUNCTION(testLight, p_){
 }
 
 static portTASK_FUNCTION(testUsart, p_){
-	ioport_set_pin_level(LCD_BACKLIGHT_ENABLE_PIN, 1);
+	//ioport_set_pin_level(LCD_BACKLIGHT_ENABLE_PIN, 1);
 	while(1){
-		snprintf(strbuf,sizeof(strbuf),"Commandnya adalah %3d", command);
-		gfx_mono_draw_string(strbuf,0,0,&sysfont);
-		//snprintf(sendbuff, sizeof(sendbuff),"%3d :%3d :%3d :%3d \n", result,servotest,qtouchtest,heap);
-		//gfx_mono_draw_string(strbuf,0, 24, &sysfont);
-		if(command==1){
+		//snprintf(strbuf,sizeof(strbuf),"Commandnya adalah %3d", command);
+		//gfx_mono_draw_string(strbuf,0,0,&sysfont);
+			if(command==1){
 			snprintf(sendbuff,sizeof(sendbuff),"Free Heap = %3d \n",heap);
 			sendString(sendbuff);
 		}else if(command == 2){
@@ -381,7 +377,7 @@ static portTASK_FUNCTION(testUsart, p_){
 		}
 		
 		
-		sendString(sendbuff);
+		//sendString(sendbuff);
 		
 		vTaskDelay(10/portTICK_PERIOD_MS);
 	}
