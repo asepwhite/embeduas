@@ -43,28 +43,22 @@
 #define USART_SERIAL_CHAR_LENGTH         USART_CHSIZE_8BIT_gc
 #define USART_SERIAL_PARITY              USART_PMODE_DISABLED_gc
 #define USART_SERIAL_STOP_BIT            false
-static char strbuf[201];
-static char sendbuff[201];
-static char reads[100];
-static char buffarray[200];
-//char in = '0';
-uint16_t result = 0;
-uint16_t result2 = 0;
-//int usarttest = 0;
-int command = 0;
-int potensiotest = 0;
+static char strbuf[201];		//string yang di print pada LCD
+static char sendbuff[201];		//string yang akan dikirim
+static char reads[100];			//string yang dibaca/request dari PC
+static char buffarray[200];		
+uint16_t result = 0;			//hasil bacaan potentio
+uint16_t result2 = 0;			//hasil bacaan lightsensor
+int command = 0;				//penanda dikirim request dari PC
+int lastReq = 0;				//request terakhir
+int potensiotest = 0;			
 int servotest = 0;
 int qtouchtest = 0;
 int pingtest = 0;
-int score = 0;
-int phase = 0;
-int incremental = 0;
-int distance = 0;
-int door = 0;
 int heap = 0;
 long increment = 0;
 
-
+//TASK
 static portTASK_FUNCTION_PROTO(testPotentio, p_);
 static portTASK_FUNCTION_PROTO(testLight, p_);
 static portTASK_FUNCTION_PROTO(testServo, p_);
@@ -79,7 +73,7 @@ static portTASK_FUNCTION_PROTO(resetAll,p_);
 void vTimerCallback(){
 	increment++;
 }
-
+//init Servo
 void PWM_Init(void)
 {
 	/* Set output */
@@ -95,7 +89,7 @@ void PWM_Init(void)
 	/* Set Compare Register value*/
 	TCC0.CCA = 375;
 }
-
+//init potentio
 static void adc_init(void)
 {
 	struct adc_config adc_conf;
@@ -113,7 +107,7 @@ static void adc_init(void)
 	adc_write_configuration(&MY_ADC, &adc_conf);
 	adcch_write_configuration(&MY_ADC, MY_ADC_CH, &adcch_conf);
 }
-
+//init lightsensor
 static void adc_init2(void)
 {
 	struct adc_config adc_conf;
@@ -131,7 +125,7 @@ static void adc_init2(void)
 	adc_write_configuration(&MY_ADC2, &adc_conf);
 	adcch_write_configuration(&MY_ADC2, MY_ADC2_CH, &adcch_conf);
 }
-
+//read potentio
 static uint16_t adc_read(){
 	uint16_t result;
 	adc_enable(&MY_ADC);
@@ -140,7 +134,7 @@ static uint16_t adc_read(){
 	result = adc_get_result(&MY_ADC, MY_ADC_CH);
 	return result;
 }
-
+//read lightsensor
 static uint16_t adc_read2(){
 	uint16_t result;
 	adc_enable(&MY_ADC2);
@@ -149,7 +143,7 @@ static uint16_t adc_read2(){
 	result = adc_get_result(&MY_ADC2, MY_ADC2_CH);
 	return result;
 }
-
+//USARTE0
 void setUpSerial()
 {
 	USARTE0_BAUDCTRLB = 0; //memastikan BSCALE = 0
@@ -196,16 +190,14 @@ void receiveString()
 
 int main (void)
 {
-	// Insert system clock initialization code here (sysclk_init()).
-
-	
+	//jalankan init pada main
 	board_init();
-	
 	pmic_init();
 	adc_init();
 	adc_init2();
 	gfx_mono_init();
 	ioport_set_pin_level(LCD_BACKLIGHT_ENABLE_PIN, 1);
+	//set port untuk USARTE0
 	PORTE_OUTSET = PIN3_bm; // PC3 as TX
 	PORTE_DIRSET = PIN3_bm; //TX pin as output
 	PORTE_OUTCLR = PIN2_bm; //PC2 as RX
@@ -218,21 +210,18 @@ int main (void)
 		.stopbits = USART_SERIAL_STOP_BIT
 	};
 	usart_init_rs232(USART_SERIAL_EXAMPLE, &USART_SERIAL_OPTIONS);
-	
 	TimerHandle_t timerPing = xTimerCreate("tPing", 2/portTICK_PERIOD_MS, pdTRUE, (void *) 0, vTimerCallback);
-	
+	//create task
 	xTaskCreate(testPotentio,"",500,NULL,1,NULL);
 	xTaskCreate(testServo,"",500,NULL,1,NULL);
-	xTaskCreate(testQtouch,"",500,NULL,1,NULL);
-	xTaskCreate(testLight,"",500,NULL,1,NULL);
+	//xTaskCreate(testQtouch,"",500,NULL,1,NULL);
+	//xTaskCreate(testLight,"",500,NULL,1,NULL);
 	xTaskCreate(testRead,"",500,NULL,1,NULL);
 	xTaskCreate(testHeap,"",500,NULL,1,NULL);
 	xTaskCreate(testUsart,"",500,NULL,1,NULL);
 	xTaskCreate(testLCD,"",500,NULL,1,NULL);
-	//xTaskCreate(resetAll,"",500,NULL,1,NULL);
-	
+	//xTaskCreate(resetAll,"",500,NULL,1,NULL); //jika dibutuhkan reset
 	xTimerStart(timerPing, 0);
-	
 	vTaskStartScheduler();
 
 	// Insert application code here, after the board has been initialized.
@@ -253,17 +242,8 @@ static portTASK_FUNCTION(testLCD, p_){
 		gfx_mono_draw_string(strbuf,0, 16, &sysfont);
 		
 		//print heap
-		snprintf(strbuf, sizeof(strbuf), "Heap|Req %3d|%3d ",heap,command);
+		snprintf(strbuf, sizeof(strbuf), "Heap|Req %3d|%3d ",heap,lastReq);
 		gfx_mono_draw_string(strbuf,0, 24, &sysfont);
-		//command
-		//snprintf(strbuf,sizeof(strbuf),"Request %3d", command);
-		//gfx_mono_draw_string(strbuf,0,32,&sysfont);
-		
-		//print usart
-		//snprintf(strbuf, sizeof(strbuf),"%3d :%3d :%3d :%3d \n", result,servotest,qtouchtest,heap);
-		//gfx_mono_draw_string(strbuf,0, 24, &sysfont);
-		//sendString(strbuf);
-		
 		
 		vTaskDelay(100/portTICK_PERIOD_MS);
 	}
@@ -272,7 +252,7 @@ static portTASK_FUNCTION(testPotentio, p_){
 
 	while(1){
 		result = adc_read();
-		if(result <= 2000){
+		if(result <= 2000){ //jika hasi bacaan potentio kurang dari 2000 maka lolos uji
 			gpio_set_pin_low(LED2_GPIO);
 			potensiotest = 1;
 		}
@@ -332,19 +312,19 @@ static portTASK_FUNCTION(testLight, p_){
 }
 
 static portTASK_FUNCTION(testUsart, p_){
-	//ioport_set_pin_level(LCD_BACKLIGHT_ENABLE_PIN, 1);
+	
 	while(1){
-		//snprintf(strbuf,sizeof(strbuf),"Commandnya adalah %3d", command);
-		//gfx_mono_draw_string(strbuf,0,0,&sysfont);
 			if(command==1){
 			snprintf(sendbuff,sizeof(sendbuff),"Free Heap = %3d \n",heap);
 			sendString(sendbuff);
+			lastReq = command;	
 		}else if(command == 2){
 			if(qtouchtest > 0){
-				sendString("Sidik jari terdeteksi(qtouch)\n");
+				sendString("Sidik jari terdeteksi(qtouch) \n");
 			}else{
-				sendString("Sidik jari tidak terdeteksi(qtouch)\n");
+				sendString("Sidik jari tidak terdeteksi(qtouch) \n");
 			}
+			lastReq = command;
 		}else if(command == 3){
 			if(result2<=2000){
 				snprintf(sendbuff,sizeof(sendbuff),"Helm sudah dikenakan (lightsensor)[%3d] \n",result2);
@@ -353,6 +333,7 @@ static portTASK_FUNCTION(testUsart, p_){
 				snprintf(sendbuff,sizeof(sendbuff),"Helm belum dikenakan (lightsensor)[%3d] \n",result2);
 				sendString(sendbuff);				
 			}
+			lastReq = command;
 		}else if(command == 4){
 			if(result<=2000){
 				snprintf(sendbuff,sizeof(sendbuff),"Kandungan alkohol masih dalam batas normal(potentio)[%3d] \n",result);
@@ -361,23 +342,25 @@ static portTASK_FUNCTION(testUsart, p_){
 				snprintf(sendbuff,sizeof(sendbuff),"Kandungan alkohol masih diatas batas normal(potentio)[%3d] \n",result);
 				sendString(sendbuff);				
 			}
+			lastReq = command;
 		}else if(command == 5){
 			if(servotest > 0){
 				sendString("Tali helm sudah dikunci \n");
 			}else{
-				sendString("Tali helm belum dikunci\n");
+				sendString("Tali helm belum dikunci \n");
 			}
+			lastReq = command;
 		}else if(command == 6){
 			if(qtouchtest > 0 && result2 <= 2000 && result <= 2000 && servotest>0){
-				sendString("Status OK, helm aman");
+				sendString("Status OK, helm aman \n");
 			}else{
 				sendString("Status pemakaian helm : belum aman \n");
-				
 			}
+			lastReq = command;
 		}
 		
+		command = 0 ;
 		
-		//sendString(sendbuff);
 		
 		vTaskDelay(10/portTICK_PERIOD_MS);
 	}
